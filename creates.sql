@@ -10,6 +10,7 @@ CREATE TABLE departamento(
     orcamento  NUMERIC,
     PRIMARY KEY(nome_dept)
 );
+
 CREATE TABLE  curso(
     id_curso  SERIAL,
     titulo    VARCHAR(45)  NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE  curso(
     PRIMARY KEY(id_curso),
     FOREIGN KEY(nome_dept) REFERENCES departamento(nome_dept)
 );
+
 CREATE TABLE instrutor(
     id_instrutor  SERIAL,
     nome          VARCHAR(80)  NOT NULL,
@@ -27,13 +29,15 @@ CREATE TABLE instrutor(
     FOREIGN KEY(nome_dept) REFERENCES departamento(nome_dept)
     
 );
+
 CREATE TABLE periodo(
     id_periodo   SERIAL UNIQUE,	
-    dia          VARCHAR(25)  NOT NULL, 
+    dia          VARCHAR  NOT NULL, 
     hora_inicial TIME  NOT NULL, 
     hora_final   TIME  NOT NULL, 
     PRIMARY KEY(id_periodo, dia , hora_inicial)
 );
+
 CREATE TABLE secao (  
     id_secao    SERIAL,
     semestre    VARCHAR(10)    NOT NULL,
@@ -48,6 +52,7 @@ CREATE TABLE secao (
     FOREIGN KEY(numero_sala) REFERENCES sala(numero_sala),
     FOREIGN KEY(cod_periodo) REFERENCES periodo(id_periodo)
 );
+
 CREATE TABLE ministra(
     cod_instrutor   INT          NOT NULL,
     cod_curso  INT          NOT NULL,
@@ -59,14 +64,16 @@ CREATE TABLE ministra(
     FOREIGN KEY(cod_secao,cod_curso,semestre) REFERENCES secao(id_secao,cod_curso,semestre),
     FOREIGN KEY (cod_instrutor) REFERENCES instrutor(id_instrutor)
 );
+
 CREATE TABLE aluno(
-    id_aluno    SERIAL,          
+    id_aluno    INT UNIQUE NOT NULL,          
     nome        VARCHAR(80)  NOT NULL,
     total_cred  INT,
     nome_dept   VARCHAR(45),  
     PRIMARY KEY (id_aluno),
     FOREIGN KEY(nome_dept) REFERENCES departamento(nome_dept) ON DELETE CASCADE
 );
+
 CREATE TABLE realiza(
     cod_aluno  INT NOT NULL,
     cod_curso  INT NOT NULL,
@@ -80,6 +87,7 @@ CREATE TABLE realiza(
     FOREIGN KEY (cod_aluno) REFERENCES aluno(id_aluno)
     
 );
+
 CREATE TABLE mentor(
     cod_aluno     INT  NOT NULL,  
     cod_instrutor INT  NOT NULL,
@@ -88,9 +96,16 @@ CREATE TABLE mentor(
     FOREIGN KEY (cod_aluno) REFERENCES aluno(id_aluno) 
    
 );
+
+
 CREATE TABLE prereq(
     id_prereq  SERIAL,
     cod_curso  INT     NOT NULL, 
     PRIMARY KEY(id_prereq,cod_curso),
     FOREIGN KEY (cod_curso) REFERENCES curso(id_curso) ON DELETE CASCADE
 );
+
+
+
+
+
