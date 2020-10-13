@@ -14,7 +14,7 @@ INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('22B', 'Agronomia', 40)
 INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('23B', 'Agronomia', 40);
 INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('24B', 'Agronomia', 40);
 
-INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('31L', 'Ciência da Computação', 60);
+INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('31L', 'Ciência da Computação', 3);
 INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('32L', 'Ciência da Computação', 45);
 INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('33L', 'Ciência da Computação', 45);
 INSERT INTO sala(numero_sala, predio, capacidade)VALUES ('34L', 'Ciência da Computação', 80);
@@ -123,7 +123,7 @@ INSERT INTO prereq(cod_curso) VALUES (6);
 INSERT INTO prereq(cod_curso) VALUES (13);
 INSERT INTO prereq(cod_curso) VALUES (19);
 INSERT INTO prereq(cod_curso) VALUES (20);
-1 = 
+
 -----------Aluno----------------------------------------------------------------------------------------
 
 INSERT INTO aluno(id_aluno,nome, total_cred, nome_dept)VALUES ( 1,'Milena Macedo', 6, 'Dep. Ciência da Computação');
